@@ -1,0 +1,17 @@
+[package]
+name = "libnode_sys"
+description = "C bindings for libnode"
+version = "0.1.0"
+edition = "2024"
+repository = "https://github.com/alshdavid/libnode-sys"
+
+[lints.rust]
+elided_lifetimes_in_paths = "allow"
+rust_2018_idioms = { priority = -1, level = "deny" }
+
+[lints.clippy]
+module_inception = "allow"
+uninlined-format-args = "allow"
+
+[dependencies]
+libloading = "0.8.6"
