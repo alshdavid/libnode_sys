@@ -4,6 +4,7 @@ description = "C bindings for libnode"
 version = "0.0.1"
 edition = "2024"
 repository = "https://github.com/alshdavid/libnode-sys"
+license = "MIT"
 
 [lints.rust]
 elided_lifetimes_in_paths = "allow"
