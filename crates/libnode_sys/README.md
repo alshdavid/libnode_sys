@@ -12,11 +12,11 @@ This can be used by:
 # Install library
 cargo add libnode_sys
 
-# Download libnode, you may do this differently (e.g. distribute libnode with your application)
+# Download libnode, this must be distributed with your application
 mkdir -p /opt/libnode
 curl \
   -L \
-  --url https://github.com/metacall/libnode/releases/download/v23.11.0/libnode-amd64-linux.tar.xz \
+  --url https://github.com/alshdavid/libnode-prebuilt/releases/download/v22.15.0/libnode-linux-amd64.tar.xz \
   | tar -xJvf - -C /opt/libnode
 ```
 
