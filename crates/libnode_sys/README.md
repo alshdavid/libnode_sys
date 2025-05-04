@@ -48,11 +48,13 @@ fn main() -> anyhow::Result<()> {
 fn main() -> anyhow::Result<()> {
   // Load libnode. You must do this before using any other APIs
   libnode_sys::load::cdylib("/path/to/libnode.so")?;
+ 
+  let nm = Box::into_raw(Box::new(libnode_sys::napi_module {
+    // ... register native module
+  }))
 
   unsafe {
-    libnode_sys::napi_module_register(Box::into_raw(Box::new(libnode_sys::napi_module {
-      // ... register native module
-    })))
+    libnode_sys::napi_module_register(nm);
 
     // Start Nodejs
     libnode_sys::node_embedding_start(/* ... */);
