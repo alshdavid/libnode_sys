@@ -10,7 +10,7 @@ type SIGNATURE = fn(
   message: *const c_char,
   message_len: isize,
 ) -> napi_status;
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn napi_fatal_error(
   location: *const c_char,

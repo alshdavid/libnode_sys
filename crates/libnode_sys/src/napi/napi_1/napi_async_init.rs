@@ -10,7 +10,7 @@ type SIGNATURE = fn(
   result: *mut napi_async_context,
 ) -> napi_status;
 
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn napi_async_init(
   env: napi_env,

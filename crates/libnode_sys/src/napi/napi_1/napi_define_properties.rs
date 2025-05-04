@@ -9,7 +9,7 @@ type SIGNATURE = fn(
   property_count: usize,
   properties: *const napi_property_descriptor,
 ) -> napi_status;
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn napi_define_properties(
   env: napi_env,

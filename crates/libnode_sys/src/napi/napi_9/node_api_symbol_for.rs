@@ -6,7 +6,7 @@ use super::super::*;
 const SYMBOL: &[u8] = "node_api_symbol_for".as_bytes();
 type SIGNATURE =
   fn(env: napi_env, utf8name: *const c_char, length: isize, result: *mut napi_value) -> napi_status;
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn node_api_symbol_for(
   env: napi_env,

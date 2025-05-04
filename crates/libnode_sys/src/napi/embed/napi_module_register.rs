@@ -24,7 +24,7 @@ pub struct napi_module {
   pub reserved: [*mut c_void; 4usize],
 }
 
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 const SYMBOL: &[u8] = "napi_module_register".as_bytes();
 
 type SIGNATURE = fn(mod_: *mut napi_module) -> napi_status;

@@ -4,7 +4,7 @@ use super::super::*;
 
 const SYMBOL: &[u8] = "napi_get_date_value".as_bytes();
 type SIGNATURE = fn(env: napi_env, value: napi_value, result: *mut f64) -> napi_status;
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn napi_get_date_value(
   env: napi_env,

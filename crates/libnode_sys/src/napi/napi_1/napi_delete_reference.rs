@@ -4,7 +4,7 @@ use super::super::*;
 
 const SYMBOL: &[u8] = "napi_delete_reference".as_bytes();
 type SIGNATURE = fn(env: napi_env, ref_: napi_ref) -> napi_status;
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn napi_delete_reference(
   env: napi_env,

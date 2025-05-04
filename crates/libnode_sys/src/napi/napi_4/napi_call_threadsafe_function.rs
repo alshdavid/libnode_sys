@@ -9,7 +9,7 @@ type SIGNATURE = fn(
   data: *mut c_void,
   is_blocking: napi_threadsafe_function_call_mode,
 ) -> napi_status;
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn napi_call_threadsafe_function(
   func: napi_threadsafe_function,

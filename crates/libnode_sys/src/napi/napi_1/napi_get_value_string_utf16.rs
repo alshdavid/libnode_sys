@@ -10,7 +10,7 @@ type SIGNATURE = fn(
   bufsize: usize,
   result: *mut usize,
 ) -> napi_status;
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn napi_get_value_string_utf16(
   env: napi_env,

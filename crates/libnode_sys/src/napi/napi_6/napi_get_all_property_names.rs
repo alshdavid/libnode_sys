@@ -11,7 +11,7 @@ type SIGNATURE = fn(
   key_conversion: napi_key_conversion,
   result: *mut napi_value,
 ) -> napi_status;
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn napi_get_all_property_names(
   env: napi_env,

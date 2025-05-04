@@ -13,6 +13,10 @@ This can be used by:
 cargo add libnode_sys
 
 # Download libnode, this must be distributed with your application
+# The version below includes a patch with a C FFI for libnode
+#
+# https://github.com/alshdavid/libnode-prebuilt
+#
 mkdir -p /opt/libnode
 curl \
   -L \
@@ -26,13 +30,12 @@ curl \
 
 ```rust
 fn main() -> anyhow::Result<()> {
-  unsafe {
-    // Load libnode. You must do this before using any other APIs
-    libnode_sys::load::cdylib("/opt/libnode/libnode.so")?;
+  // Load libnode. You must do this before using any other APIs
+  libnode_sys::load::cdylib("/opt/libnode/libnode.so")?;
 
-    // Note, this is not yet available in mainline
-    // https://github.com/nodejs/node/pull/54660
-    libnode_sys::node_embedding_main_run();
+  unsafe {
+    // Start Nodejs
+    libnode_sys::node_embedding_start(/* ... */);
 
     Ok(())
   }
@@ -43,19 +46,29 @@ fn main() -> anyhow::Result<()> {
 
 ```rust
 fn main() -> anyhow::Result<()> {
-  unsafe {
-    // Load libnode. You must do this before using any other APIs
-    libnode_sys::load::cdylib("/path/to/libnode.so")?;
+  // Load libnode. You must do this before using any other APIs
+  libnode_sys::load::cdylib("/path/to/libnode.so")?;
 
-    libnode::napi_module_register(Box::into_raw(Box::new(libnode_sys::napi_module {
+  unsafe {
+    libnode_sys::napi_module_register(Box::into_raw(Box::new(libnode_sys::napi_module {
       // ... register native module
     })))
 
-    // Note, this is not yet available in mainline
-    // https://github.com/nodejs/node/pull/54660
-    libnode_sys::node_embedding_main_run();
+    // Start Nodejs
+    libnode_sys::node_embedding_start(/* ... */);
 
     Ok(())
   }
 }
+```
+
+# How to include libnode in your application
+
+I recommend distributing the dynamic library alongside your application and finding it up at runtime
+using a relative path to your executable
+
+```
+/my-application
+  my-application
+  libnode.so
 ```

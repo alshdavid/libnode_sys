@@ -10,7 +10,7 @@ type SIGNATURE = fn(
   finalize_cb: napi_finalize,
   finalize_hint: *mut c_void,
 ) -> napi_status;
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn napi_set_instance_data(
   env: napi_env,

@@ -4,7 +4,7 @@ use super::super::*;
 
 const SYMBOL: &[u8] = "napi_create_bigint_uint64".as_bytes();
 type SIGNATURE = fn(env: napi_env, value: u64, result: *mut napi_value) -> napi_status;
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn napi_create_bigint_uint64(
   env: napi_env,

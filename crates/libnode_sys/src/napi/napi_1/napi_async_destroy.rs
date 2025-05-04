@@ -5,7 +5,7 @@ use super::super::*;
 const SYMBOL: &[u8] = "napi_async_destroy".as_bytes();
 type SIGNATURE = fn(env: napi_env, async_context: napi_async_context) -> napi_status;
 
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn napi_async_destroy(
   env: napi_env,

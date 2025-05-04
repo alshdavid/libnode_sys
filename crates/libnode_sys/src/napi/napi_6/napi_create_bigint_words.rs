@@ -11,7 +11,7 @@ type SIGNATURE = fn(
   words: *const u64,
   result: *mut napi_value,
 ) -> napi_status;
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn napi_create_bigint_words(
   env: napi_env,

@@ -4,7 +4,7 @@ use super::super::*;
 
 const SYMBOL: &[u8] = "napi_create_array_with_length".as_bytes();
 type SIGNATURE = fn(env: napi_env, length: usize, result: *mut napi_value) -> napi_status;
-static CACHE: OnceLock<crate::load::DynSymbol<SIGNATURE>> = OnceLock::new();
+static CACHE: OnceLock<crate::load::Symbol<SIGNATURE>> = OnceLock::new();
 
 pub unsafe fn napi_create_array_with_length(
   env: napi_env,

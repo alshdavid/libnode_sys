@@ -1,9 +1,10 @@
 [package]
-name = "edon_example_basic"
+name = "libnode_sys_example_basic"
 version = "0.0.0-local"
 authors = ["alshdavid"]
 edition = "2021"
 license = "MIT"
 
 [dependencies]
+anyhow = "1.0.98"
 libnode_sys = { path = "../../crates/libnode_sys" }
