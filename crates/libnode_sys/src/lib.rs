@@ -1,8 +1,8 @@
+mod embedding;
 pub mod load;
 mod napi;
-mod node;
 mod result;
 
+pub use embedding::*;
 pub use napi::*;
-pub use node::*;
 pub use result::*;

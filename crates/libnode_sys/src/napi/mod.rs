@@ -1,4 +1,3 @@
-mod embed;
 mod napi;
 mod napi_1;
 mod napi_2;
@@ -10,7 +9,6 @@ mod napi_7;
 mod napi_8;
 mod napi_9;
 
-pub use self::embed::*;
 pub use self::napi::*;
 pub use self::napi_1::*;
 pub use self::napi_2::*;

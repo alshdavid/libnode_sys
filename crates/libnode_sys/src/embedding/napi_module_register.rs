@@ -18,7 +18,6 @@ pub struct napi_module {
   pub nm_flags: c_uint,
   pub nm_filename: *const c_char,
   pub nm_register_func: napi_addon_register_func,
-  // pub nm_register_func: *mut c_void,
   pub nm_modname: *const c_char,
   pub nm_priv: *mut c_void,
   pub reserved: [*mut c_void; 4usize],
