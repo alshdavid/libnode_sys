@@ -1,9 +1,9 @@
 [package]
 name = "libnode_sys"
 description = "C bindings for libnode"
-version = "0.0.4"
+version = "0.0.5"
 edition = "2024"
-repository = "https://github.com/alshdavid/libnode-sys"
+repository = "https://github.com/alshdavid/libnode_sys"
 license = "MIT"
 
 [lints.rust]
