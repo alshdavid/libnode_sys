@@ -1,7 +1,7 @@
 [package]
 name = "libnode_sys"
 description = "C bindings for libnode"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2024"
 repository = "https://github.com/alshdavid/libnode-sys"
 license = "MIT"
@@ -15,4 +15,4 @@ module_inception = "allow"
 uninlined-format-args = "allow"
 
 [dependencies]
-libloading = "0.8.6"
+libloading = "^0.8.0"
