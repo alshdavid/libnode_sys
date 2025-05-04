@@ -64,7 +64,7 @@ fn main() -> anyhow::Result<()> {
 
 # How to include libnode in your application
 
-I recommend distributing the dynamic library alongside your application and finding it up at runtime
+I recommend distributing the dynamic library alongside your application and finding it at runtime
 using a relative path to your executable
 
 ```

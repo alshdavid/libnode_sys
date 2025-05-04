@@ -3,8 +3,7 @@ use std::ffi::c_int;
 use std::ffi::CString;
 
 pub fn main() -> anyhow::Result<()> {
-  // Args to pass into node.js
-  let args = vec!["-e", "console.log('hello world')"];
+  let code = r#"console.log('hello world')"#;
 
   // Find path to libnode
   let lib_path = std::env::current_exe()
@@ -22,12 +21,14 @@ pub fn main() -> anyhow::Result<()> {
   // Use the path to the current executable as the first argument
   let current_exe = CString::new(std::env::current_exe().unwrap().to_str().unwrap()).unwrap();
 
+  // Args to pass into node.js
+  let args = vec!["-e", code];
+
   // Convert arguments to CStrings
   let args = args
     .iter()
     .map(|arg| CString::new(*arg).unwrap())
     .collect::<Vec<CString>>();
-
   // Create complete argument list
   let mut final_args = vec![current_exe];
   final_args.extend(args);
