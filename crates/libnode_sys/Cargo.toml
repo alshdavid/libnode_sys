@@ -1,7 +1,7 @@
 [package]
 name = "libnode_sys"
 description = "C bindings for libnode"
-version = "0.0.5"
+version = "0.0.6"
 edition = "2024"
 repository = "https://github.com/alshdavid/libnode_sys"
 license = "MIT"
