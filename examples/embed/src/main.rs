@@ -13,7 +13,9 @@ pub fn main() -> anyhow::Result<()> {
     .parent()
     .unwrap()
     .join("libnode")
-    .join("libnode.so");
+    .join(libnode_sys::constants::with_extension("libnode"));
+
+  println!("Loading: {:?}", lib_path);
 
   // Load libnode
   libnode_sys::load::cdylib(&lib_path)?;

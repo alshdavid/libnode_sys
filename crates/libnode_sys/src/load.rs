@@ -14,7 +14,10 @@ static LIBNODE: std::sync::OnceLock<crate::Result<Library>> = std::sync::OnceLoc
 
 /// Load Nodejs symbols for current process, used for n-api extensions
 pub fn this() -> &'static crate::Result<Library> {
-  LIBNODE.get_or_init(|| Ok(Library::this()))
+  #[cfg(unix)]
+  return LIBNODE.get_or_init(|| Ok(Library::this()));
+  #[cfg(windows)]
+  return LIBNODE.get_or_init(|| Ok(Library::this().unwrap()));
 }
 
 /// Load "libnode" dynamic library, used for embedding Nodejs into Rust processes

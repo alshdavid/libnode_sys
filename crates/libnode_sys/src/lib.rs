@@ -1,3 +1,4 @@
+pub mod constants;
 mod embedding;
 pub mod load;
 mod napi;
