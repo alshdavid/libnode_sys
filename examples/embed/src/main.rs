@@ -1,19 +1,15 @@
 use std::ffi::c_char;
 use std::ffi::c_int;
 use std::ffi::CString;
+use std::path::PathBuf;
 
 pub fn main() -> anyhow::Result<()> {
   let code = r#"console.log('hello world')"#;
 
   // Find path to libnode
-  let lib_path = std::env::current_exe()
-    .unwrap()
-    .parent()
-    .unwrap()
-    .parent()
-    .unwrap()
-    .join("libnode")
-    .join(libnode_sys::constants::with_extension("libnode"));
+  let lib_path =
+    PathBuf::from(std::env::var("EDON_LIBNODE_PATH").expect("Supply EDON_LIBNODE_PATH"))
+      .join(libnode_sys::constants::with_extension("libnode"));
 
   println!("Loading: {:?}", lib_path);
 
@@ -44,7 +40,7 @@ pub fn main() -> anyhow::Result<()> {
   // Start Node.js
   unsafe {
     // Note: Due to a limitation of V8, once started & exited, Nodejs cannot be started again
-    libnode_sys::node_embedding_start(c_args.len() as c_int, c_args.as_ptr())
+    libnode_sys::node_embedding_main(c_args.len() as c_int, c_args.as_ptr())
   };
 
   Ok(())

@@ -37,7 +37,11 @@ pub unsafe fn get_sym<T>(symbol: &[u8]) -> crate::Result<Symbol<T>> {
   let lib = match LIBNODE.get() {
     Some(Ok(lib)) => lib,
     Some(Err(err)) => return Err(crate::Error::from(err)),
-    None => return Err(crate::Error::LibnodeNotLoaded),
+    None => {
+      return Err(crate::Error::LibnodeNotLoaded(
+        String::from_utf8(symbol.to_owned()).unwrap(),
+      ))
+    }
   };
   match unsafe { lib.get(symbol.as_ref()) } {
     Ok(sym) => Ok(sym),
